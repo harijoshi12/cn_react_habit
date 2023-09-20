@@ -1,11 +1,11 @@
 import React from 'react';
-import AddHabitButton from '../components/AddHabitButton';
 import CardHabit from '../components/CardHabit';
+import AddHabitForm from '../components/AddHabitForm';
 
 const HomePage = () => {
   return (
     <>
-      <AddHabitButton />
+      <AddHabitForm />
       <CardHabit />
     </>
   );

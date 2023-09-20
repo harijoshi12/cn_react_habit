@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const CardHabit = () => {
+const CardHabit = ({ habit }) => {
   return (
     <div>
-      <h2>Habit Name</h2>
+      <h2>{habit?.name}</h2>
       <p>4/7</p>
+      <Link to={`/habit/${habit?.id}`}>Details</Link>
     </div>
   );
 };

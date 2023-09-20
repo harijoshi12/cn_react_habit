@@ -5,10 +5,14 @@ export const habitSlice = createSlice({
   initialState: [],
   reducers: {
     addHabit: (state, action) => {
-      // add a habit
+      state.habits.push(action.payload);
     },
-    updateHabitStatus: (statue, action) => {
-      // update habit status
+    updateHabitStatus: (state, action) => {
+      const { id, status, day } = action.payload;
+      const habit = state.habits.find((habit) => habit.id === id);
+      if (habit) {
+        habit.days[day] = status;
+      }
     },
   },
 });
