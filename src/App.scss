@@ -1,0 +1,152 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  border: 0;
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)),
+    url(../public/bg.svg);
+  background-position: center;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+header {
+  background: black;
+  color: white;
+  padding: 20px 10px;
+  text-align: center;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+#addHabitForm {
+  width: 93%;
+  height: 40px;
+  margin-bottom: 20px;
+  border: 1px solid;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: rgba(255, 255, 255, 0.3) 0px 2px 20px 1px;
+  input {
+    width: 75%;
+    height: 100%;
+    padding: 5px 10px;
+    font-size: 17px;
+    &::placeholder {
+      font-size: 17px;
+    }
+  }
+  button {
+    background-image: radial-gradient(
+      circle farthest-corner at 10% 20%,
+      rgba(100, 43, 115, 1) 0%,
+      rgba(4, 0, 4, 1) 90%
+    );
+    height: 100%;
+    cursor: pointer;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    width: 25%;
+    transition: all 0.2s linear;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.cardHabit {
+  width: 90%;
+  height: 90px;
+  margin: 10px 0;
+  border: 1px solid white;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .content {
+    h2 {
+      font-size: 25px;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+    }
+  }
+  .count {
+    margin: 10px 0;
+  }
+  .viewDetail {
+    font-size: 20;
+    background-color: white;
+    padding: 7px 15px;
+    border-radius: 20px;
+    border: 1px solid blue;
+  }
+}
+.weekCardsContainer {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  width: 95%;
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cardWeek.active {
+  border-color: green;
+}
+.cardWeek {
+  min-width: 200px;
+  height: 90px;
+  margin: 10px 0;
+  border: 1px solid white;
+  color: white;
+  border-radius: 10px;
+  // padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.7);
+  position: relative;
+  overflow: hidden;
+  h3 {
+    padding: 10px;
+    text-align: center;
+  }
+  .statusBtnWrapper {
+    // background: red;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .statusBtn {
+      width: 33.1%;
+      cursor: pointer;
+      padding: 5px 0;
+      background-color: gray;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    .statusBtn.active {
+      background-color: green;
+      color: white;
+    }
+  }
+}

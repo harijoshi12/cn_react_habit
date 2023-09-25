@@ -6,7 +6,9 @@ import HabitDetailPage from './pages/HabitDetailPage';
 function App() {
   return (
     <div className="App">
-      <h1>Habit Tracker</h1>
+      <header>
+        <h2> "Track All Your Habits In One Go."</h2>
+      </header>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/habit/:id" element={<HabitDetailPage />} />

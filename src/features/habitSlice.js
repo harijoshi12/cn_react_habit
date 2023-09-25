@@ -1,17 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Load habits from local storage
+const loadHabits = () => {
+  const habitsData = localStorage.getItem('habits');
+  return habitsData ? JSON.parse(habitsData) : [];
+};
+
 export const habitSlice = createSlice({
   name: 'habits',
-  initialState: [],
+  initialState: loadHabits(),
   reducers: {
     addHabit: (state, action) => {
-      state.habits.push(action.payload);
+      state.push(action.payload);
+      localStorage.setItem('habits', JSON.stringify(state));
     },
     updateHabitStatus: (state, action) => {
-      const { id, status, day } = action.payload;
-      const habit = state.habits.find((habit) => habit.id === id);
+      const { id, day, status } = action.payload;
+      const habit = state.find((h) => h.id === id);
       if (habit) {
+        if (!habit.days) {
+          habit.days = {};
+        }
         habit.days[day] = status;
+        localStorage.setItem('habits', JSON.stringify(state)); // Update local storage
       }
     },
   },
