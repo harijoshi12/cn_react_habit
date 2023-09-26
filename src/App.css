@@ -26,6 +26,7 @@ header {
   width: 100%;
   position: sticky;
   top: 0;
+  z-index: 100;
 }
 
 .wrapper {
@@ -91,12 +92,20 @@ header {
 .cardHabit .count {
   margin: 10px 0;
 }
-.cardHabit .viewDetail {
+.cardHabit .viewDetail,
+.cardHabit .deleteBtn {
   font-size: 20;
   background-color: white;
   padding: 7px 15px;
   border-radius: 20px;
   border: 1px solid blue;
+  cursor: pointer;
+}
+.cardHabit .deleteBtn {
+  margin-right: 10px;
+  background-color: red;
+  color: white;
+  border: 1px solid white;
 }
 
 .weekCardsContainer {
@@ -107,6 +116,27 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
+.goBack {
+  color: white;
+  font-size: 15px;
+  background-color: blue;
+  padding: 5px 30px;
+  border-radius: 30px;
+  transition: all 0.3s linear;
+}
+.goBack:hover {
+  transform: scale(1.2);
+}
+
+.title {
+  margin: 20px;
+  color: white;
+  font-size: 20px;
+  text-transform: capitalize;
 }
 
 .cardWeek.active {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import CardHabitDetail from '../components/CardWeekView';
 import { useSelector } from 'react-redux';
 import CardWeekView from '../components/CardWeekView';
@@ -14,9 +14,9 @@ const HabitDetailPage = () => {
   }
   const getPreviousDays = (n) => {
     const days = [];
-    const d = new Date();
-    for (let i = 0; i < n; i++) {
-      d.setDate(d.getDate() - 1);
+    for (let i = n - 1; i >= 0; i--) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
       days.push(new Date(d));
     }
     return days;
@@ -25,7 +25,10 @@ const HabitDetailPage = () => {
 
   return (
     <div className="wrapper" id="habitDetalPage">
-      <h3>{habit.name}</h3>
+      <Link to="/">
+        <span className="goBack">&larr; Go Back to Home</span>
+      </Link>
+      <h3 className="title">Habit: {habit.name}</h3>
       <div className="weekCardsContainer">
         {days?.map((day, index) => (
           <CardWeekView key={index} date={day} habit={habit} />
