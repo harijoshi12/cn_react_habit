@@ -1,17 +1,28 @@
+// Importing required modules and components
 import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import CardHabitDetail from '../components/CardWeekView';
 import { useSelector } from 'react-redux';
 import CardWeekView from '../components/CardWeekView';
 
+// HabitDetailPage component
 const HabitDetailPage = () => {
+  // Extracting habit ID from the URL parameters
+
   const { id } = useParams();
+  // Initializing navigation function from react-router
+
   const navigate = useNavigate();
+
+  // Fetching the specific habit data from Redux store
   const habit = useSelector((state) => state.habits.find((h) => h.id === id));
+
+  // Redirect to home if habit is not found
   if (!habit) {
     navigate('/');
     return null;
   }
+
+  // Function to get the previous n days
   const getPreviousDays = (n) => {
     const days = [];
     for (let i = n - 1; i >= 0; i--) {
@@ -21,8 +32,11 @@ const HabitDetailPage = () => {
     }
     return days;
   };
+
+  // Get the last 7 days
   const days = getPreviousDays(7);
 
+  // Render the component
   return (
     <div className="wrapper" id="habitDetalPage">
       <Link to="/">
@@ -38,4 +52,5 @@ const HabitDetailPage = () => {
   );
 };
 
+// Exporting HabitDetailPage component
 export default HabitDetailPage;
